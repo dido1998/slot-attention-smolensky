@@ -114,7 +114,7 @@ class SlotAttentionSmolensky(nn.Module):
         fillers, attn = self.iterate(fillers, k, v, masks)
 
         if self.learnable_roles:
-            # one version of learnable roles where they are conditioned on input using attention + mlp
+            # expanding the learnable roles along the batch dimension
             roles = self.role_embedding.repeat(b, 1, 1)
             
             # each role should be a distribution over features
